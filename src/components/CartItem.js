@@ -14,9 +14,11 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
-// import Icon from '@material-ui/core/Icon';
-
+import SvgIcon from '@material-ui/core/SvgIcon';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Icon from '@material-ui/core/Icon';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,32 +38,33 @@ const useStyles = makeStyles(theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
-  },
+
 }));
 
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const { item, onSelect } = props;
+  const { item, addItem, removeItem } = props;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root}> 
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
         action={
-          <IconButton onClick={() => onSelect(item)} aria-label="settings">
-            +
+          <>
+          {removeItem ? (
+            <IconButton onClick={() => removeItem(item)} color="primary" aria-label="remove from shopping cart">
+            <RemoveShoppingCartIcon />
           </IconButton>
+          ): (
+          <IconButton onClick={() => addItem(item)} color="primary" aria-label="add to shopping cart">
+          <AddShoppingCartIcon />
+        </IconButton>
+          )}
+        </>
         }
         title={item.title}
         subheader={(item.date).toString()}

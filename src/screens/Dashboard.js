@@ -22,53 +22,38 @@ const Dashboard = () => {
     const allItems = [{
         title: 'Product1',
         date: new Date(),
-        // img: 'imagepath',
-        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'
-    }, {
-        title: 'Product2',
-        date: new Date(),
-        // img: 'imagepath',
-        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'
-    }, {
-        title: 'Product3',
-        date: new Date(),
-        // img: 'imagepath',
-        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'
-    }, {
-        title: 'Product4',
-        date: new Date(),
-        // img: 'imagepath',
-        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'
-    }, {
-        title: 'Product5',
-        date: new Date(),
-        // img: 'imagepath',
-        description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'
+        // img: '/Users/Saharsh/Adarsh/e-tribal/public/Dokra-5.webp',
+        description: 'this is product discription. this is product discriptionthis is product discription'
     }];
 
-    const handleOnSelect = (item) => {
+    const handleAddItem = (item) => {
         let tempCart = cart.slice();
         tempCart.push(item);
         setCart(tempCart);
     }
 
+    const handleRemoveItem = (item) => {
+        let tempCart = cart.slice();
+        tempCart.splice(tempCart.findIndex(it => it.title===item.title), 1);
+        setCart(tempCart);
+    }
+
     return (
         <div className={classes.root}>
-            <Grid container spacing={3}>
-            <Grid item xs={6}>
-                <Paper className={classes.paper}>
+            <Grid container spacing={5}>
+                <Grid item xs={6}>
+                    <Paper className={classes.paper}>
                         <h2>Products</h2>
                         {allItems.map((item)=>(
-                            <CartItem key={item.title} item={item} onSelect={handleOnSelect}/>
+                            <CartItem key={item.title} item={item} addItem={handleAddItem}/>
                         ))}
                     </Paper>
                 </Grid>
-                
                 <Grid item xs={6}>
-                        <Paper className={classes.paper}>
+                    <Paper className={classes.paper}>
                         <h2>Cart</h2>
                         {cart.map((item)=>(
-                            <CartItem key={item.title} item={item}/>
+                            <CartItem key={item.title} item={item} removeItem={handleRemoveItem}/>
                         ))}
                     </Paper>
                 </Grid>
