@@ -19,6 +19,17 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Icon from '@material-ui/core/Icon';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
+import Badge from '@material-ui/core/Badge';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function RecipeReviewCard(props) {
+const ProductCard = (props) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const { item, addItem, removeItem } = props;
@@ -57,7 +68,9 @@ export default function RecipeReviewCard(props) {
           <>
           {removeItem ? (
             <IconButton onClick={() => removeItem(item)} color="primary" aria-label="remove from shopping cart">
-            <RemoveShoppingCartIcon />
+              <StyledBadge badgeContent={item.count + 1} color="secondary">
+              <RemoveShoppingCartIcon />
+            </StyledBadge>
           </IconButton>
           ): (
           <IconButton onClick={() => addItem(item)} color="primary" aria-label="add to shopping cart">
@@ -127,3 +140,4 @@ export default function RecipeReviewCard(props) {
     </Card>
   );
 }
+export default ProductCard;
