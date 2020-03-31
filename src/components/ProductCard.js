@@ -7,16 +7,16 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
+// import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Icon from '@material-ui/core/Icon';
+// import SvgIcon from '@material-ui/core/SvgIcon';
+// import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import Icon from '@material-ui/core/Icon';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 import Badge from '@material-ui/core/Badge';
@@ -62,22 +62,22 @@ const ProductCard = (props) => {
   };
 
   return (
-    <Card className={classes.root}> 
+    <Card className={classes.root}>
       <CardHeader
         action={
           <>
-          {removeItem ? (
-            <IconButton onClick={() => removeItem(item)} color="primary" aria-label="remove from shopping cart">
-              <StyledBadge badgeContent={item.count + 1} color="secondary">
-              <RemoveShoppingCartIcon />
-            </StyledBadge>
-          </IconButton>
-          ): (
-          <IconButton onClick={() => addItem(item)} color="primary" aria-label="add to shopping cart">
-          <AddShoppingCartIcon />
-        </IconButton>
-          )}
-        </>
+            {removeItem ? (
+              <IconButton onClick={() => removeItem(item)} color="primary" aria-label="remove from shopping cart">
+                <StyledBadge badgeContent={item.count + 1} color="secondary">
+                  <RemoveShoppingCartIcon />
+                </StyledBadge>
+              </IconButton>
+            ) : (
+                <IconButton onClick={() => addItem(item)} color="primary" aria-label="add to shopping cart">
+                  <AddShoppingCartIcon />
+                </IconButton>
+              )}
+          </>
         }
         title={item.title}
         subheader={(item.date).toString()}
