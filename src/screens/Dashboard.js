@@ -23,8 +23,8 @@ const Dashboard = () => {
     const allItems = [
         {
         title: 'Product1',
-        date: new Date(),
-        // img: '/Users/Saharsh/Adarsh/e-tribal/public/Dokra-5.webp',
+        // date: new Date(),
+        // img: 'public/porduct-1.webp',
         description: 'this is product discription. this is product discriptionthis is product discription'
         },
         {

@@ -1,15 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
+import Badge from '@material-ui/core/Badge';
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
+<<<<<<< Updated upstream
 // import Avatar from '@material-ui/core/Avatar';
+=======
+>>>>>>> Stashed changes
 import IconButton from '@material-ui/core/IconButton';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+<<<<<<< Updated upstream
 // import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
@@ -17,10 +20,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import SvgIcon from '@material-ui/core/SvgIcon';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 // import Icon from '@material-ui/core/Icon';
+=======
+>>>>>>> Stashed changes
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
-import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
+import ShareIcon from '@material-ui/icons/Share';
+import clsx from 'clsx';
+import React from 'react';
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -80,7 +88,7 @@ const ProductCard = (props) => {
           </>
         }
         title={item.title}
-        subheader={(item.date).toString()}
+        // subheader={(item.date).toString()}
       />
       <CardMedia
         className={classes.media}
