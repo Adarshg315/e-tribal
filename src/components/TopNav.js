@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LanguageIcon from '@material-ui/icons/Language';
+import CartContext from '../context/CartContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -81,10 +82,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+const TopNav = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const { cart } = useContext(CartContext);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -162,7 +164,14 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
-
+  
+  
+  
+  let productCount = 0;
+  cart.map(product => productCount += product.count);
+  
+  
+  
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -194,7 +203,7 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -204,12 +213,12 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton>
             <IconButton aria-label="show 4 new products" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={productCount} color="secondary">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -242,3 +251,5 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+export default TopNav;

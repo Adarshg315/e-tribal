@@ -5,23 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Collapse from '@material-ui/core/Collapse';
-<<<<<<< Updated upstream
-// import Avatar from '@material-ui/core/Avatar';
-=======
->>>>>>> Stashed changes
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-<<<<<<< Updated upstream
-// import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import SvgIcon from '@material-ui/core/SvgIcon';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
-// import Icon from '@material-ui/core/Icon';
-=======
->>>>>>> Stashed changes
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -76,7 +62,7 @@ const ProductCard = (props) => {
           <>
             {removeItem ? (
               <IconButton onClick={() => removeItem(item)} color="primary" aria-label="remove from shopping cart">
-                <StyledBadge badgeContent={item.count + 1} color="secondary">
+                <StyledBadge badgeContent={item.count} color="secondary">
                   <RemoveShoppingCartIcon />
                 </StyledBadge>
               </IconButton>

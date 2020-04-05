@@ -1,8 +1,9 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import ProductCard from '../components/ProductCard';
+import CartContext from '../context/CartContext';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,27 +16,22 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-const Dashboard = () => {
-    // const {} = useContext(contextValue);
+const Dashboard = (props) => {
+    const { cart, setCart } = useContext(CartContext);
     const classes = useStyles();
-    const [cart, setCart] = useState([]);
     
     const allItems = [
         {
         title: 'Product1',
-        // date: new Date(),
-        // img: 'public/porduct-1.webp',
         description: 'this is product discription. this is product discriptionthis is product discription'
         },
         {
         title: 'Product2',
-        date: new Date(),
-        // img: '/Users/Saharsh/Adarsh/e-tribal/public/Dokra-5.webp',
         description: 'this is product discription. this is product discriptionthis is product discription'
         }
     ];
 
-    const products = allItems.map(it=>({...it, count: 0}));
+    const products = allItems.map(it=>({...it, count: 1}));
 
     const handleAddProduct = (productToBeAdded) => {
         let tempCart = cart.slice();
@@ -45,7 +41,6 @@ const Dashboard = () => {
             tempCart.map(prod=>{
                 if(prod.title === productToBeAdded.title) {
                     prod.count++
-                    console.log(prod)
                 }
                 return prod;
             });
