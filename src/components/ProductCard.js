@@ -87,7 +87,7 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" color="red">
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
