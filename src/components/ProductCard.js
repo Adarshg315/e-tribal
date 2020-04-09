@@ -57,7 +57,7 @@ const ProductCard = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
+      <CardHeader 
         action={
           <>
             {removeItem ? (
