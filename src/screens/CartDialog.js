@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import React, { useContext } from 'react';
 import ProductCard from '../components/ProductCard';
 import CartContext from '../context/CartContext';
+//import CartContext from '../context/CartContext';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
