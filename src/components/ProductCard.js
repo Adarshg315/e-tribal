@@ -15,6 +15,12 @@ import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import ShareIcon from "@material-ui/icons/Share";
 import clsx from "clsx";
 import React from "react";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -54,29 +60,48 @@ const ProductCard = (props) => {
     setExpanded(!expanded);
   };
 
+  const useStylesBootstrap = makeStyles((theme) => ({
+    arrow: {
+      color: theme.palette.common.black,
+    },
+    tooltip: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
+  const BootstrapTooltip = (props) => {
+    const classes = useStylesBootstrap();
+
+    return <Tooltip arrow classes={classes} {...props} />;
+  };
+
   return (
     <Card className={classes.root}>
       <CardHeader
         action={
           <>
             {removeItem ? (
-              <IconButton
-                onClick={() => removeItem(item)}
-                color="primary"
-                aria-label="remove from shopping cart"
-              >
-                <StyledBadge badgeContent={item.count} color="secondary">
-                  <RemoveShoppingCartIcon />
-                </StyledBadge>
-              </IconButton>
+              <BootstrapTooltip title="Remove from Cart" placement="bottom">
+                <IconButton
+                  onClick={() => removeItem(item)}
+                  color="primary"
+                  aria-label="remove from shopping cart"
+                >
+                  <StyledBadge badgeContent={item.count} color="secondary">
+                    <RemoveShoppingCartIcon />
+                  </StyledBadge>
+                </IconButton>
+              </BootstrapTooltip>
             ) : (
-              <IconButton
-                onClick={() => addItem(item)}
-                color="primary"
-                aria-label="add to shopping cart"
-              >
-                <AddShoppingCartIcon />
-              </IconButton>
+              <BootstrapTooltip title="Add to Cart" placement="bottom">
+                <IconButton
+                  onClick={() => addItem(item)}
+                  color="primary"
+                  aria-label="add to shopping cart"
+                >
+                  <AddShoppingCartIcon />
+                </IconButton>
+              </BootstrapTooltip>
             )}
           </>
         }
@@ -94,22 +119,39 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/* <IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
+        </IconButton> */}
+        {/* <FormControlLabel
+          control={ */}
+        <BootstrapTooltip title="Wishlist" placement="top">
+          <Checkbox
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite />}
+            //name="icon"
+          />
+        </BootstrapTooltip>
+        {/* }
+          //label="Custom icon"
+        /> */}
+        <BootstrapTooltip title="Share" placement="right">
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+        </BootstrapTooltip>
+
+        <BootstrapTooltip title="More Info" placement="top">
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </BootstrapTooltip>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

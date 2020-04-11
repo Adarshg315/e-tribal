@@ -16,6 +16,16 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React, { useContext, useState } from "react";
 import CartContext from "../context/CartContext";
 import CartDialog from "../screens/CartDialog";
+import Tooltip from "@material-ui/core/Tooltip";
+import clsx from "clsx";
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -126,6 +136,21 @@ const TopNav = () => {
     </Menu>
   );
 
+  const useStylesBootstrap = makeStyles((theme) => ({
+    arrow: {
+      color: theme.palette.common.black,
+    },
+    tooltip: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
+  const BootstrapTooltip = (props) => {
+    const classes = useStylesBootstrap();
+
+    return <Tooltip arrow classes={classes} {...props} />;
+  };
+
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -159,6 +184,58 @@ const TopNav = () => {
   let productCount = 0;
   cart.map((product) => (productCount += product.count));
 
+  //const classes = useStyles();
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
   return (
     <div className={classes.grow}>
       <AppBar position="fixed">
@@ -171,6 +248,22 @@ const TopNav = () => {
           >
             <MenuIcon />
           </IconButton>
+
+          {/* <div>
+            {["left"].map((anchor) => (
+              <React.Fragment key={anchor}>
+                <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                <Drawer
+                  anchor={anchor}
+                  open={state[anchor]}
+                  onClose={toggleDrawer(anchor, false)}
+                >
+                  {list(anchor)}
+                </Drawer>
+              </React.Fragment>
+            ))}
+          </div> */}
+
           <Typography className={classes.title} variant="h6" noWrap>
             E-Tribal
           </Typography>
@@ -199,15 +292,17 @@ const TopNav = () => {
                 <LanguageIcon />
               </Badge>
             </IconButton> */}
-            <IconButton
-              aria-label="show new products"
-              color="inherit"
-              onClick={handleClickOpen}
-            >
-              <Badge badgeContent={productCount} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
+            <BootstrapTooltip title="View Cart" placement="bottom">
+              <IconButton
+                aria-label="show new products"
+                color="inherit"
+                onClick={handleClickOpen}
+              >
+                <Badge badgeContent={productCount} color="secondary">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </BootstrapTooltip>
             <CartDialog open={open} handleClose={handleClose} />
             {/* <IconButton aria-label="show 17 new notifications" color="inherit">
                   <Badge badgeContent={0} color="secondary">
