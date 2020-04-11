@@ -114,9 +114,11 @@ const ProductCard = (props) => {
         title="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {item.description}
-        </Typography>
+        <BootstrapTooltip title="Product Description" placement="bottom">
+          <Typography variant="body2" color="textSecondary" component="p">
+            {item.description}
+          </Typography>
+        </BootstrapTooltip>
       </CardContent>
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
