@@ -119,11 +119,7 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-<<<<<<< HEAD
-        <IconButton aria-label="add to favorites" color="red">
-=======
         {/* <IconButton aria-label="add to favorites">
->>>>>>> f80ef563755a1b81bc495071720402e9869ae33e
           <FavoriteIcon />
         </IconButton> */}
         {/* <FormControlLabel
