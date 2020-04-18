@@ -4,23 +4,20 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
+import Checkbox from "@material-ui/core/Checkbox";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import ShareIcon from "@material-ui/icons/Share";
 import clsx from "clsx";
-import React from "react";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import Button from "@material-ui/core/Button";
-import Tooltip from "@material-ui/core/Tooltip";
+import React, { useState } from "react";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -53,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductCard = (props) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
   const { item, addItem, removeItem } = props;
 
   const handleExpandClick = () => {
@@ -114,9 +111,11 @@ const ProductCard = (props) => {
         title="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {item.description}
-        </Typography>
+        <BootstrapTooltip title="Product Description" placement="bottom">
+          <Typography variant="body2" color="textSecondary" component="p">
+            {item.description}
+          </Typography>
+        </BootstrapTooltip>
       </CardContent>
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
