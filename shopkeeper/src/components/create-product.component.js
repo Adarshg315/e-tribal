@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const CreateExercise = () => {
+const CreateProduct = () => {
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
 
@@ -74,4 +74,4 @@ const CreateExercise = () => {
   );
 };
 
-export default CreateExercise;
+export default CreateProduct;
