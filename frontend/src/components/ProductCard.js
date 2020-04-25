@@ -1,30 +1,31 @@
-import Badge from "@material-ui/core/Badge";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import Checkbox from "@material-ui/core/Checkbox";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
-import Typography from "@material-ui/core/Typography";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
-import ShareIcon from "@material-ui/icons/Share";
-import clsx from "clsx";
-import React, { useState } from "react";
+import Badge from '@material-ui/core/Badge';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import Checkbox from '@material-ui/core/Checkbox';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
+import ShareIcon from '@material-ui/icons/Share';
+import clsx from 'clsx';
+import { useSnackbar } from 'notistack';
+import React, { useState } from 'react';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
     right: -3,
     top: 13,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: "0 4px",
+    padding: '0 4px',
   },
 }))(Badge);
 
@@ -34,22 +35,23 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
+    paddingTop: '56.25%', // 16:9
   },
   expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    transform: "rotate(180deg)",
+    transform: 'rotate(180deg)',
   },
 }));
 
 const ProductCard = (props) => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
   const [expanded, setExpanded] = useState(false);
   const { item, addItem, removeItem } = props;
 
@@ -72,29 +74,36 @@ const ProductCard = (props) => {
     return <Tooltip arrow classes={classes} {...props} />;
   };
 
+  const handleAddItem = () => {
+    addItem(item);
+    enqueueSnackbar(item.title + ' Added Sucessfully', {
+      variant: 'success',
+    });
+  };
+
   return (
     <Card className={classes.root}>
       <CardHeader
         action={
           <>
             {removeItem ? (
-              <BootstrapTooltip title="Remove from Cart" placement="bottom">
+              <BootstrapTooltip title='Remove from Cart' placement='bottom'>
                 <IconButton
                   onClick={() => removeItem(item)}
-                  color="primary"
-                  aria-label="remove from shopping cart"
+                  color='primary'
+                  aria-label='remove from shopping cart'
                 >
-                  <StyledBadge badgeContent={item.count} color="secondary">
+                  <StyledBadge badgeContent={item.count} color='secondary'>
                     <RemoveShoppingCartIcon />
                   </StyledBadge>
                 </IconButton>
               </BootstrapTooltip>
             ) : (
-              <BootstrapTooltip title="Add to Cart" placement="bottom">
+              <BootstrapTooltip title='Add to Cart' placement='bottom'>
                 <IconButton
-                  onClick={() => addItem(item)}
-                  color="primary"
-                  aria-label="add to shopping cart"
+                  onClick={handleAddItem}
+                  color='primary'
+                  aria-label='add to shopping cart'
                 >
                   <AddShoppingCartIcon />
                 </IconButton>
@@ -103,16 +112,15 @@ const ProductCard = (props) => {
           </>
         }
         title={item.title}
-        // subheader={(item.date).toString()}
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image='/static/images/cards/paella.jpg'
+        title='Paella dish'
       />
       <CardContent>
-        <BootstrapTooltip title="Product Description" placement="bottom">
-          <Typography variant="body2" color="textSecondary" component="p">
+        <BootstrapTooltip title='Product Description' placement='bottom'>
+          <Typography variant='body2' color='textSecondary' component='p'>
             {item.description}
           </Typography>
         </BootstrapTooltip>
@@ -123,7 +131,7 @@ const ProductCard = (props) => {
         </IconButton> */}
         {/* <FormControlLabel
           control={ */}
-        <BootstrapTooltip title="Wishlist" placement="top">
+        <BootstrapTooltip title='Wishlist' placement='top'>
           <Checkbox
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite />}
@@ -133,26 +141,26 @@ const ProductCard = (props) => {
         {/* }
           //label="Custom icon"
         /> */}
-        <BootstrapTooltip title="Share" placement="right">
-          <IconButton aria-label="share">
+        <BootstrapTooltip title='Share' placement='right'>
+          <IconButton aria-label='share'>
             <ShareIcon />
           </IconButton>
         </BootstrapTooltip>
 
-        <BootstrapTooltip title="More Info" placement="top">
+        <BootstrapTooltip title='More Info' placement='top'>
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
             })}
             onClick={handleExpandClick}
             aria-expanded={expanded}
-            aria-label="show more"
+            aria-label='show more'
           >
             <ExpandMoreIcon />
           </IconButton>
         </BootstrapTooltip>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout='auto' unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
