@@ -27,7 +27,6 @@ const Product = (props) => {
 
 const ProductsList = () => {
   const [products, setProduct] = useState([]);
-
   useEffect(() => {
     axios
       .get('http://localhost:5050/products/')
