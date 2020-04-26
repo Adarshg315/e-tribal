@@ -20,6 +20,7 @@
     "react-instantsearch-dom": "^6.4.0",
     "react-js-snackbar": "^1.0.4",
     "react-scripts": "3.4.0",
+    "react-webcam": "^5.0.1",
     "uuid": "^7.0.2",
     "yarn": "^1.22.4"
   },

@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+var multer = require('multer');
+
 const app = express();
 app.use(express.json());
 
@@ -28,6 +30,15 @@ const usersRouter = require('./routes/users');
 
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
+
+// app.use(
+//   multer({
+//     dest: './uploads/',
+//     rename: function (fieldname, filename) {
+//       return filename;
+//     },
+//   })
+// );
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

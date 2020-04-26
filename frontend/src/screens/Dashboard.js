@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { default as React, useContext, useEffect, useState } from 'react';
+// import Webcam from 'react-webcam';
 import ProductCard from '../components/ProductCard';
 import CartContext from '../context/CartContext';
 
@@ -48,10 +49,29 @@ const Dashboard = (props) => {
     }
     setCart(tempCart);
   };
+  const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: 'user',
+  };
+
+  const webcamRef = React.useRef(null);
+  const capture = React.useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+  }, [webcamRef]);
 
   return (
     <div className={classes.root}>
-      {/* <SearchBox /> */}
+      {/* <Webcam /> */}
+      {/* <Webcam
+        audio={true}
+        height={720}
+        ref={webcamRef}
+        screenshotFormat='image/jpeg'
+        width={1280}
+        videoConstraints={videoConstraints}
+      /> */}
+      <button onClick={capture}>Capture photo</button>
       <Grid container spacing={5}>
         <Grid item xs={6}>
           <Paper className={classes.paper}>

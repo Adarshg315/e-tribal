@@ -17,6 +17,7 @@ import React, { useContext, useState } from 'react';
 import CartContext from '../context/CartContext';
 import CartDialog from '../screens/CartDialog';
 import TemporaryDrawer from '../screens/Drawer';
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -181,7 +182,7 @@ const TopNav = () => {
           <TemporaryDrawer />
           <BootstrapTooltip title='Tribal E-Kart' placement='bottom'>
             <Typography className={classes.title} variant='h6' noWrap>
-              E-Tribal
+              India
             </Typography>
           </BootstrapTooltip>
 
