@@ -24,6 +24,11 @@ const Navbar = () => {
               Create User
             </Link>
           </li>
+          <li className='navbar-item'>
+            <Link to='/seller' className='nav-link'>
+            Seller info
+            </Link>
+            </li>
         </ul>
       </div>
     </nav>
