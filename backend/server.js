@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-require('dotenv').config();
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const Nexmo = require('nexmo');
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
