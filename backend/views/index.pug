@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+    h1 Welcome to #{brand}!
+    if number
+        p You are logged in using number: #{number}
+        a(href="logout")
+            button.ghost-button(type="button") Logout
+    else
+        p Please log in to continue
+        a(href="login")
+            button.ghost-button(type="button") Login

@@ -49,29 +49,8 @@ const Dashboard = (props) => {
     }
     setCart(tempCart);
   };
-  const videoConstraints = {
-    width: 1280,
-    height: 720,
-    facingMode: 'user',
-  };
-
-  const webcamRef = React.useRef(null);
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-  }, [webcamRef]);
-
   return (
     <div className={classes.root}>
-      {/* <Webcam /> */}
-      {/* <Webcam
-        audio={true}
-        height={720}
-        ref={webcamRef}
-        screenshotFormat='image/jpeg'
-        width={1280}
-        videoConstraints={videoConstraints}
-      /> */}
-      <button onClick={capture}>Capture photo</button>
       <Grid container spacing={5}>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
