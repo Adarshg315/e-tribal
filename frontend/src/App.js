@@ -4,14 +4,18 @@ import React from 'react';
 import TopNav from './components/TopNav';
 import CartProvider from './context/CartProvider';
 import Dashboard from './screens/Dashboard';
+import LoginScreen from './screens/Login';
 const App = () => {
   return (
-    <CartProvider>
-      <SnackbarProvider maxSnack={2}>
-        <TopNav />
-        <Dashboard />
-      </SnackbarProvider>
-    </CartProvider>
+    <>
+      <LoginScreen />
+      <CartProvider>
+        <SnackbarProvider maxSnack={2}>
+          <TopNav />
+          <Dashboard />
+        </SnackbarProvider>
+      </CartProvider>
+    </>
   );
 };
 

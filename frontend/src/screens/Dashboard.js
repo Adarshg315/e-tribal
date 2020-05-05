@@ -1,11 +1,10 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import axios from 'axios';
 import { default as React, useContext, useEffect, useState } from 'react';
-// import Webcam from 'react-webcam';
 import ProductCard from '../components/ProductCard';
 import CartContext from '../context/CartContext';
+import axios from '../utils/axiosHelper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +21,10 @@ const Dashboard = (props) => {
   const { cart, setCart } = useContext(CartContext);
   const classes = useStyles();
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     axios
-      .get('http://localhost:5050/products/')
+      .get('products')
       .then((response) => {
         setProducts(response.data);
       })
