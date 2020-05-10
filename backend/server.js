@@ -5,6 +5,7 @@ const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const Nexmo = require('nexmo');
+const rp = require('request-promise');
 require('dotenv').config();
 
 const app = express();
@@ -147,3 +148,21 @@ app.get('/logout', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+
+//images scraping
+const $ = require('cheerio');
+const url = 'https://www.tribesindia.com/product-category/paintings/bhil/';
+
+rp(url)
+  .then((html) => {
+    //success!
+    console.log($('img', html).length);
+    const imgUrls = [];
+    for (let i = 0; i < $('img', html).length; i++) {
+      imgUrls.push($('img', html)[i].attribs['data-src']);
+    }
+    console.log(imgUrls);
+  })
+  .catch((err) => {
+    //handle error
+  });

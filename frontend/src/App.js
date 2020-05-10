@@ -1,14 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SnackbarProvider } from 'notistack';
 import React from 'react';
-import TopNav from './components/TopNav';
+import TopNav from './components/Topnav/TopNav';
 import CartProvider from './context/CartProvider';
 import Dashboard from './screens/Dashboard';
-import LoginScreen from './screens/Login';
+
 const App = () => {
   return (
     <>
-      <LoginScreen />
+      {/* <LoginScreen /> */}
       <CartProvider>
         <SnackbarProvider maxSnack={2}>
           <TopNav />

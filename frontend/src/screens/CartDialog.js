@@ -4,32 +4,22 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';
-import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import { useSnackbar } from 'notistack';
-import React, { useContext } from 'react';
-import ProductCard from '../components/ProductCard';
+import React, { forwardRef, useContext } from 'react';
+import ProductCard from '../components/ProductCard/ProductCard';
 import CartContext from '../context/CartContext';
+import CartDialogStyles from '../screens/ScreenStyles';
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative',
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
-}));
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
+const Transition = forwardRef((props, ref) => {
+  return <Slide direction='down' ref={ref} {...props} />;
 });
 
 const FullScreenDialog = (props) => {
   const { open, handleClose } = props;
-  const classes = useStyles();
+  const classes = CartDialogStyles();
   const { cart, setCart } = useContext(CartContext);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -70,8 +60,8 @@ const FullScreenDialog = (props) => {
         </Toolbar>
       </AppBar>
       <Grid item xs={6}>
-        <Paper className={classes.paper}>
-          <h2>Cart</h2>
+        <Paper className={classes.paper} variant='outlined' elevation={3}>
+          {/* <h2>Cart</h2> */}
           {cart.map((item) => (
             <ProductCard
               key={item.title}
