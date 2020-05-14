@@ -8,6 +8,10 @@ const productSchema = new Schema({
   description: {
     type: String,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 const Product = mongoose.model('Product', productSchema);
