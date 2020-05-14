@@ -1,29 +1,77 @@
-import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import React, { useContext, useState } from 'react';
-import CartContext from '../../context/CartContext';
-import CartDialog from '../../screens/CartDialog';
-import useStylesBootstrap from '../Topnav/TopNavStyles';
-import useStyles from './TopNavStyles.js';
+import AppBar from "@material-ui/core/AppBar";
+import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
+import MailIcon from "@material-ui/icons/Mail";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import React, { useContext, useState } from "react";
+import CartContext from "../../context/CartContext";
+import CartDialog from "../../screens/CartDialog";
+import useStylesBootstrap from "../Topnav/TopNavStyles";
+import useStyles from "./TopNavStyles.js";
+import Avatar from "@material-ui/core/Avatar";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import AuthContext from "../../context/AuthContext";
+import WishDialog from "../../screens/WishDialog";
+import WishContext from "../../context/WishContext";
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    backgroundColor: "#44b700",
+    color: "#44b700",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    "&::after": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      animation: "$ripple 1.2s infinite ease-in-out",
+      border: "1px solid currentColor",
+      content: '""',
+    },
+  },
+  "@keyframes ripple": {
+    "0%": {
+      transform: "scale(.8)",
+      opacity: 1,
+    },
+    "100%": {
+      transform: "scale(2.4)",
+      opacity: 0,
+    },
+  },
+}))(Badge);
+
+const styleBadgeStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 const TopNav = () => {
   const classes = useStyles();
+  const avatarClasses = styleBadgeStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const { cart } = useContext(CartContext);
+  const { wishCart } = useContext(WishContext);
+  const { loggedIn, setLogin } = useContext(AuthContext);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [open, setOpen] = useState(false);
+  const [openWish, setWishOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,6 +80,15 @@ const TopNav = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleWishClickOpen = () => {
+    setWishOpen(true);
+  };
+
+  const handleWishClose = () => {
+    setWishOpen(false);
+  };
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -41,18 +98,19 @@ const TopNav = () => {
     handleMobileMenuClose();
   };
 
-  // const handleMobileMenuOpen = (event) => {
-  //   setMobileMoreAnchorEl(event.currentTarget);
-  // };
+  const logoutUser = () => {
+    localStorage.removeItem("loggedIn");
+    setLogin(false);
+  };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -67,123 +125,110 @@ const TopNav = () => {
     return <Tooltip arrow classes={classes} {...props} />;
   };
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label='show 4 new mails' color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
+      {/* <MenuItem>
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <Badge badgeContent={4} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label='show 11 new notifications' color='inherit'>
-          <Badge badgeContent={11} color='secondary'>
+        <IconButton aria-label="show 11 new notifications" color="inherit">
+          <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
     </Menu>
   );
 
   let productCount = 0;
   cart.map((product) => (productCount += product.count));
 
+  let wishProductCount = 0;
+  wishCart.map((wishProduct) => (wishProductCount += wishProduct.count));
+
   return (
     <div className={classes.grow}>
-      <AppBar position='fixed'>
+      <AppBar position="fixed">
         <Toolbar>
-          {/* <TemporaryDrawer /> */}
-          <BootstrapTooltip title='Tribal Cart' placement='bottom'>
-            <Typography className={classes.title} variant='h6' noWrap>
-              TC
+          <BootstrapTooltip title="Tribal Cart" placement="bottom">
+            <Typography className={classes.title} variant="h6" noWrap>
+              Srappy
             </Typography>
           </BootstrapTooltip>
-
-          {/* <BootstrapTooltip title='Search Tribal Products!' placement='bottom'>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder='Search Product'
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-          </BootstrapTooltip> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={0} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            {/* <IconB utton aria-label="change language" color="inherit">
-              <Badge color="secondary">
-                <LanguageIcon />
-              </Badge>
-            </IconButton> */}
-            <BootstrapTooltip title='View Cart' placement='bottom'>
+            {/* Wish List */}
+            <BootstrapTooltip title="Wish-list" placement="bottom">
               <IconButton
-                aria-label='show new products'
-                color='inherit'
-                onClick={handleClickOpen}
+                aria-label="show Wishlist products"
+                color="inherit"
+                onClick={handleWishClickOpen}
               >
-                <Badge badgeContent={productCount} color='secondary'>
-                  <ShoppingCartIcon />
+                <Badge badgeContent={wishProductCount} color="secondary">
+                  <FavoriteBorder />
                 </Badge>
               </IconButton>
             </BootstrapTooltip>
-            <CartDialog open={open} handleClose={handleClose} />
-            <IconButton
-              edge='end'
-              aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              // onClick={handleProfileMenuOpen}
-              color='inherit'
-            >
-              <AccountCircleIcon />
-            </IconButton>
-          </div>
 
-          <div className={classes.sectionMobile}>
-            <BootstrapTooltip title='View Cart' placement='bottom'>
+            <WishDialog openWish={openWish} handleWishClose={handleWishClose} />
+
+            {/* Cart */}
+            <BootstrapTooltip title="View Cart" placement="bottom">
               <IconButton
-                aria-label='show new products'
-                color='inherit'
+                aria-label="show new products"
+                color="inherit"
                 onClick={handleClickOpen}
               >
-                <Badge badgeContent={productCount} color='secondary'>
+                <Badge badgeContent={productCount} color="secondary">
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
             </BootstrapTooltip>
-            <IconButton
-              edge='end'
-              aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              // onClick={handleProfileMenuOpen}
-              color='inherit'
-            >
-              <AccountCircleIcon />
-            </IconButton>
+
+            <CartDialog open={open} handleClose={handleClose} />
+
+            {/* Avatar code */}
+            <BootstrapTooltip title="User" placement="bottom">
+              <StyledBadge
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                variant={loggedIn ? "dot" : ""}
+                classes={avatarClasses}
+              >
+                <Avatar
+                  alt="Avatar"
+                  src="https://media-exp1.licdn.com/dms/image/C5103AQG-Rx4p5D2C8A/profile-displayphoto-shrink_200_200/0?e=1594857600&v=beta&t=WxMXbindgaLSKKAWKvbYvfDFLkKMASORdJPa2DG3qWI"
+                />
+              </StyledBadge>
+            </BootstrapTooltip>
+
+            <BootstrapTooltip title="SignOut" placement="bottom">
+              <IconButton
+                aria-label="show new products"
+                color="inherit"
+                onClick={logoutUser}
+              >
+                <ExitToAppIcon />
+              </IconButton>
+            </BootstrapTooltip>
           </div>
         </Toolbar>
       </AppBar>

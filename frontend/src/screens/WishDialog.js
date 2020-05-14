@@ -10,7 +10,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useSnackbar } from "notistack";
 import React, { forwardRef, useContext } from "react";
 import ProductCard from "../components/ProductCard/ProductCard";
-import CartContext from "../context/CartContext";
+import WishContext from "../context/WishContext";
 import CartDialogStyles from "../screens/ScreenStyles";
 
 const Transition = forwardRef((props, ref) => {
@@ -18,14 +18,14 @@ const Transition = forwardRef((props, ref) => {
 });
 
 const FullScreenDialog = (props) => {
-  const { open, handleClose } = props;
+  const { openWish, handleWishClose } = props;
   const classes = CartDialogStyles();
-  const { cart, setCart } = useContext(CartContext);
+  const { wishCart, setWishCart } = useContext(WishContext);
 
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleRemoveItem = (item) => {
-    let tempCart = cart.slice();
+  const handleRemoveWishItem = (item) => {
+    let tempCart = wishCart.slice();
     if (item.count === 1) {
       tempCart.splice(
         tempCart.findIndex((it) => it.title === item.title),
@@ -34,15 +34,15 @@ const FullScreenDialog = (props) => {
     } else {
       item.count--;
     }
-    setCart(tempCart);
-    enqueueSnackbar(item.title + " Removed from cart", { variant: "info" });
+    setWishCart(tempCart);
+    enqueueSnackbar(item.title + " Removed from Wish", { variant: "info" });
   };
 
   return (
     <Dialog
       fullScreen
-      open={open}
-      onClose={handleClose}
+      open={openWish}
+      onClose={handleWishClose}
       TransitionComponent={Transition}
     >
       <AppBar className={classes.appBar}>
@@ -50,23 +50,23 @@ const FullScreenDialog = (props) => {
           <IconButton
             edge="start"
             color="inherit"
-            onClick={handleClose}
+            onClick={handleWishClose}
             aria-label="close"
           >
             <CloseIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Cart
+            WishList
           </Typography>
         </Toolbar>
       </AppBar>
       <Grid item xs={6}>
         <Paper className={classes.paper} variant="outlined" elevation={3}>
-          {cart.map((item) => (
+          {wishCart.map((item) => (
             <ProductCard
               key={item.title}
               item={item}
-              removeItem={handleRemoveItem}
+              removeitem={handleRemoveWishItem}
             />
           ))}
         </Paper>

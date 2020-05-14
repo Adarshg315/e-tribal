@@ -1,20 +1,21 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { SnackbarProvider } from 'notistack';
-import React from 'react';
-import TopNav from './components/Topnav/TopNav';
-import CartProvider from './context/CartProvider';
-import Dashboard from './screens/Dashboard';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { SnackbarProvider } from "notistack";
+import React from "react";
+import routes from "./routes";
+import CartProvider from "./context/CartProvider";
+import AuthProvider from "./context/AuthProvider";
+import WishProvider from "./context/WishProvider";
 
 const App = () => {
   return (
     <>
-      {/* <LoginScreen /> */}
-      <CartProvider>
-        <SnackbarProvider maxSnack={2}>
-          <TopNav />
-          <Dashboard />
-        </SnackbarProvider>
-      </CartProvider>
+      <WishProvider>
+        <CartProvider>
+          <SnackbarProvider maxSnack={3}>
+            <AuthProvider>{routes()}</AuthProvider>
+          </SnackbarProvider>
+        </CartProvider>
+      </WishProvider>
     </>
   );
 };
