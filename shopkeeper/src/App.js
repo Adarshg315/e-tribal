@@ -6,10 +6,7 @@ import CreateUser from './components/create-user.component';
 import Editproduct from './components/edit-product.component';
 import Navbar from './components/navbar.component';
 import ProductsList from './components/products-list.component';
-
-
-import  BasicTextFields from './components/seller-info.component';
-
+import  NameForm from './components/seller-info.component';
 const App = () => {
   return (
     <Router>
@@ -21,7 +18,7 @@ const App = () => {
         <Route path='/create' component={CreateProduct} />
         <Route path='/user' component={CreateUser} />
        
-        <Route path='/seller' component={BasicTextFields} />
+        <Route path='/seller' component={NameForm} /> 
       </div>
     </Router>
   );
