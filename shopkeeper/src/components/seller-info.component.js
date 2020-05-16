@@ -1,8 +1,6 @@
 import React from 'react';
-
 class NameForm extends React.Component {
-
-  constructor(){
+ constructor(){
     super();
     this.state = {
       firstname: '',
@@ -18,11 +16,8 @@ class NameForm extends React.Component {
       state: '',
       fields: '',
       errors: '',
-      
-    }
+       }
     this.handle = this.handle.bind(this);
-  
-
     this.Change = this.Change.bind(this);
     this.Number = this.Number.bind(this);
     this.mobile = this.mobile.bind(this);
@@ -36,14 +31,15 @@ class NameForm extends React.Component {
      handleSubmit = (event) => {
          event.preventDefault()
          console.log(event.target[0].value)
-         //   console.log(event.target.elements.firstname.value)
-         //    console.log(event.target.firstname.value)
-         //console.log(this.inputNode.value)
+     //console.log(event.target.elements.firstname.value)
+     // console.log(event.target.firstname.value)
+     //console.log(this.inputNode.value)
          console.log(event.target.elements.lastname.value)
          console.log(event.target.elements.pin.value)
          console.log(event.target.elements.mobileno.value)
          console.log(event.target.elements.categories.value)  
          console.log(event.target.elements.gender.value)
+        
          console.log(event.target.elements.shopname.value)
          console.log(event.target.elements.address1.value)
          console.log(event.target.elements.address2.value)
@@ -53,22 +49,20 @@ class NameForm extends React.Component {
   handle(e){
   let val = e.target.value.replace(/[^A-Za-z]/ig, '');
   this.setState(state => ({firstname: val }));
-  }
+   }
  Number(e){
-  // let val = e.target.value.replace(/^\(?([0-9]{7})\)?$/ig, '');
   let val = e.target.value.replace(/[^+91(7\d|8\d|9\d)\d{9}$]/ig, '');
   this.setState(state => ({pin: val }));
  }
  mobile(e){
  let val = e.target.value.replace(/[^+91(7\d|8\d|9\d)\d{9}$]/ig, '');
- // let val = e.target.value.replace(/^([9]{1})([234789]{1})([0-9]{8})$/ig, '');
-  this.setState(state => ({mobileno: val }));
-   }
- Change(e){
+ this.setState(state => ({mobileno: val }));
+  }
+Change(e){
     let val = e.target.value.replace(/[^A-Za-z]/ig, '');
     this.setState(state => ({lastname: val }));
   }
-  myFunction() {
+ myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
   shopname(e){
@@ -87,12 +81,11 @@ class NameForm extends React.Component {
   city(e){
     let val = e.target.value.replace(/[^A-Za-z]/ig, '');
     this.setState(state => ({city: val }));
-  
   }
   check(e){
     let val = e.target.value.replace(/[^A-Za-z]/ig, '');
     this.setState(state => ({state: val }));
-   }
+  }
     render() {
     return (
 
