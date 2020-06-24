@@ -1,11 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const path = require("path");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-const Nexmo = require("nexmo");
 const productImages = require("../backend/scrapper/productImages");
+const paymentApi = require("../backend/routes/payment");
 require("dotenv").config();
 
 const app = express();
@@ -30,10 +29,12 @@ app.use(express.json());
 
 const productsRouter = require("./routes/products");
 const usersRouter = require("./routes/user");
+const paymentRouter = require("./routes/payment");
 // const productImagesRouter = require('./scrapper/productImages')
 
 app.use("/products", productsRouter);
 app.use("/user", usersRouter);
+app.use("/payment", paymentRouter);
 // app.use('/product-imgs', productImagesRouter);
 
 app.use(express.static("public"));
@@ -59,3 +60,4 @@ app.listen(port, () => {
 });
 
 productImages(app);
+paymentApi(app);

@@ -6,14 +6,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React, { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import CartDialog from "../../screens/CartDialog";
-import useStylesBootstrap from "../Topnav/TopNavStyles";
-import useStyles from "./TopNavStyles.js";
+import TopnavStyles, { useStylesBootstrap } from "./TopNavStyles";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -21,6 +18,8 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import AuthContext from "../../context/AuthContext";
 import WishDialog from "../../screens/WishDialog";
 import WishContext from "../../context/WishContext";
+import Toggle from "../../Toggle";
+import { useDarkMode } from "../../userDarkMode";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -61,7 +60,7 @@ const styleBadgeStyles = makeStyles((theme) => ({
 }));
 
 const TopNav = () => {
-  const classes = useStyles();
+  const classes = TopnavStyles();
   const avatarClasses = styleBadgeStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -161,6 +160,11 @@ const TopNav = () => {
   let wishProductCount = 0;
   wishCart.map((wishProduct) => (wishProductCount += wishProduct.count));
 
+  const [theme, toggleTheme, componentMounted] = useDarkMode();
+  if (!componentMounted) {
+    return <div />;
+  }
+
   return (
     <div className={classes.grow}>
       <AppBar position="fixed">
@@ -210,12 +214,12 @@ const TopNav = () => {
                   vertical: "bottom",
                   horizontal: "right",
                 }}
-                variant={loggedIn ? "dot" : ""}
+                variant={loggedIn ? "dot" : "standard"}
                 classes={avatarClasses}
               >
                 <Avatar
                   alt="Avatar"
-                  src="https://media-exp1.licdn.com/dms/image/C5103AQG-Rx4p5D2C8A/profile-displayphoto-shrink_200_200/0?e=1594857600&v=beta&t=WxMXbindgaLSKKAWKvbYvfDFLkKMASORdJPa2DG3qWI"
+                  // src="https://media-exp1.licdn.com/dms/image/C5103AQG-Rx4p5D2C8A/profile-displayphoto-shrink_200_200/0?e=1594857600&v=beta&t=WxMXbindgaLSKKAWKvbYvfDFLkKMASORdJPa2DG3qWI"
                 />
               </StyledBadge>
             </BootstrapTooltip>
@@ -229,6 +233,8 @@ const TopNav = () => {
                 <ExitToAppIcon />
               </IconButton>
             </BootstrapTooltip>
+
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
           </div>
         </Toolbar>
       </AppBar>

@@ -3,30 +3,25 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import Checkbox from "@material-ui/core/Checkbox";
+// import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import Favorite from "@material-ui/icons/Favorite";
+// import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
-import clsx from "clsx";
+// import clsx from "clsx";
 import { useSnackbar } from "notistack";
-import React, { useState } from "react";
+import React from "react";
 import useStyles, { StyledBadge } from "./ProductCardStyles";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const ProductCard = (props) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-  const [expanded, setExpanded] = useState(false);
   const { item, addItem, removeItem, removeWishItem } = props;
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const useStylesBootstrap = makeStyles((theme) => ({
     arrow: {
@@ -58,7 +53,7 @@ const ProductCard = (props) => {
   };
 
   return (
-    <Card className={classes.root} raised="True">
+    <Card className={classes.root} raised={true}>
       <CardHeader
         action={
           <>
@@ -123,6 +118,7 @@ const ProductCard = (props) => {
         <BootstrapTooltip title="Product Description" placement="bottom">
           <Typography variant="body2" color="textSecondary" component="p">
             {"Description :" + item.description}
+            {"Price: ₹" + item.price}
           </Typography>
         </BootstrapTooltip>
       </CardContent>

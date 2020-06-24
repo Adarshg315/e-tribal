@@ -1,8 +1,0 @@
-extends layout.pug
-
-block content
-    h1 Log in: Step 1
-    fieldset
-        form(action='/verify', method='post')
-            input.ghost-input(name='number', type='text', placeholder='Enter your mobile number', required='')
-            input.ghost-button(type='submit', value='Get Verification Code')

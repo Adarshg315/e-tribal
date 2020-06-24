@@ -9,9 +9,9 @@ export default () => {
     <Router>
       <TopNav />
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <AuthScreen />
-        </Route>
+        </Route> */}
         <Route path="/dashboard">
           <Dashboard />
         </Route>
