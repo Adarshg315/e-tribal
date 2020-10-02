@@ -1,4 +1,5 @@
-# e-tribal
+# e-tribal [![Open Source Helpers](https://www.codetriage.com/adarshg315/e-tribal/badges/users.svg)](https://www.codetriage.com/adarshg315/e-tribal)
+
 Minor Project Repo
 
 This is a our minor project we have made during march 2020
