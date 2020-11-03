@@ -48,9 +48,13 @@ __Steps to get started with project__<br />
     (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)<br />.
   
     
-    
-    
-<img src="https://raw.githubusercontent.comAdarshg315/e-tribal/master/e-tribal/Screenshot from 2020-11-03 19-02-01.png?sanitize=true&raw=true" />
+    __Some Screenshots of the Project__
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 18-59-26.png?sanitize=true&raw=true" />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-13.png?sanitize=true&raw=true" />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-37.png?sanitize=true&raw=true" />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-00-17.png?sanitize=true&raw=true" />
 
       
     
