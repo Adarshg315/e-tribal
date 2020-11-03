@@ -26,25 +26,27 @@ __SRS__ available at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwqnpiY
   1.2 Product Listing<br />
 
 __Prerequisites__<br />
-1) Git installed <br />
-2) npm or yarn installed <br />
+1) __Git__ installed <br />
+2) __npm__ or __yarn__ installed <br />
 
 __Steps to get started with project__<br />
 
-1) Clone the repo using git clone https://github.com/Adarshg315/e-tribal.git form terminal.<br />
-2) Change the directory to e-tribal<br />
+1) __Clone__ the repo using __git clone https://github.com/Adarshg315/e-tribal.git__ form terminal.<br />
+2) Change the directory to __e-tribal__<br />
 3) To start __Frontend__<br />
-    3.1 Change the directory to e-tribal/frontend.<br />
-    3.2 Install the dependencies using yarn or npm I am using yarn here.<br />
-    3.3 Just type yarn and hit enter (it will take a few minutes depending on your internet speed).<br />
-    3.4 Now just cd into __frontend/src__ and type yarn start (this will start the project on http://localhost:3000/).
+    3.1 Change the directory to __e-tribal/frontend__.<br />
+    3.2 __Install the dependencies__ using yarn or npm I am using yarn here.<br />
+    3.3 Type __yarn__ and hit enter (it will take a few minutes depending on your internet speed).<br />
+    3.4 Now just cd into __frontend/src__ and type __yarn start__ (this will start the project on http://localhost:3000/).
 
 4) To start __Backend__<br />
-    4.1 Change the directory to e-tribal/backend.<br />
-    4.2 Install the dependencies as done for frontend.<br />
-    4.3 Just type yarn and hit enter (it will take a few minutes depending on your internet speed).<br />
-    4.4 Once all the packages are installed start the Node.js server suing __node server.js__ command. <br />.
-    (You will notice now the data appers on the dashboard )
+    4.1 Change the directory to __e-tribal/backend__.<br />
+    4.2 __Install the dependencies__ as done for frontend.<br />
+    4.3 Type __yarn__ and hit enter.
+    4.4 Once all the packages are installed start the Node.js server using __node server.js__ command. <br />.
+    (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)
+  
+    
     
     
   
