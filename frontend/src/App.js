@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { SnackbarProvider } from "notistack";
 import React from "react";
 import routes from "./routes";

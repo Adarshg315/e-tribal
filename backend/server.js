@@ -10,7 +10,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
+const uri = process.env.  ;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,

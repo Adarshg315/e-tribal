@@ -1,7 +1,7 @@
 const rp = require("request-promise");
 const $ = require("cheerio");
 
-const url = "https://www.tribesindia.com/product-category/paintings/bhil/";
+const url = "https://market.tribesindia.com/home-living/paintings/bhil";
 // const url = "https://in.pinterest.com/satishnair/tribes-of-india/";
 
 const productImages = (app) => {
