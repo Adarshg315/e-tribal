@@ -1,8 +1,8 @@
 # e-tribal [![Open Source Helpers](https://www.codetriage.com/adarshg315/e-tribal/badges/users.svg)](https://www.codetriage.com/adarshg315/e-tribal)
 
-Minor Project Repo
+Minor Project Repository
 
-This is a our minor project we have made during march 2020
+This is a our minor project repo, made during march 2020
 the project uses the MERN stack
 
 Frontend -> React.js<br />
