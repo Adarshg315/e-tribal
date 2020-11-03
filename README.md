@@ -26,9 +26,10 @@ Full SRS can be found at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwq
   1.2 Product Listing<br />
 
 __Steps to get started with project__<br />
+
 __Prerequisites__
-1) Git installed
-2) npm or yarn installed
+1) Git installed <br />
+2) npm or yarn installed <br />
 
 1) Clone the repo using git clone https://github.com/Adarshg315/e-tribal.git form terminal.<br />
 2) Change the directory to e-tribal<br />
