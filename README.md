@@ -1,19 +1,19 @@
 # e-tribal [![Open Source Helpers](https://www.codetriage.com/adarshg315/e-tribal/badges/users.svg)](https://www.codetriage.com/adarshg315/e-tribal)
 
-Minor Project Repository
+__Minor Project Repository__
 
 This is a our minor project repo, made during march 2020
-the project uses the MERN stack
+the project uses the __MERN stack__
 
-Frontend -> React.js<br />
+__Frontend -> React.js<br />
 Backend -> Node.js<br />
 Middileware -> Express.js<br />
-Database -> MongoDB <br />
+Database -> MongoDB <br />__
 
 It is an ecommerce like website which aims to sell the tribal products and have almost all the basic functions that 
 an ecomm website have, the project is divided into two major sections
 
-Full SRS can be found at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwqnpiYSL65cCU/view?usp=sharing 
+__SRS__ available at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwqnpiYSL65cCU/view?usp=sharing 
 
 1) __Dashboard__<br />
   1.1 Login/ Signup Screen (OTP Verification)<br />
@@ -25,11 +25,11 @@ Full SRS can be found at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwq
   1.1 CRUD Operations<br /> 
   1.2 Product Listing<br />
 
-__Steps to get started with project__<br />
-
-__Prerequisites__
+__Prerequisites__<br />
 1) Git installed <br />
 2) npm or yarn installed <br />
+
+__Steps to get started with project__<br />
 
 1) Clone the repo using git clone https://github.com/Adarshg315/e-tribal.git form terminal.<br />
 2) Change the directory to e-tribal<br />
