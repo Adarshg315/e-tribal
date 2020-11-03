@@ -43,14 +43,15 @@ __Steps to get started with project__<br />
 4) To start __Backend__<br />
     4.1 Change the directory to __e-tribal/backend__.<br />
     4.2 __Install the dependencies__ as done for frontend.<br />
-    4.3 Type __yarn__ and hit enter.
+    4.3 Type __yarn__ and hit enter.<br />.
     4.4 Once all the packages are installed start the Node.js server using __node server.js__ command. <br />.
-    (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)
+    (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)<br />.
   
     
     
     
-  
+<img src="https://raw.githubusercontent.comAdarshg315/e-tribal/master/e-tribal/Screenshot from 2020-11-03 19-02-01.png?sanitize=true&raw=true" />
+
       
     
     
