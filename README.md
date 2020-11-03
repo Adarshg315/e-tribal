@@ -13,6 +13,8 @@ Database -> MongoDB <br />
 It is an ecommerce like website which aims to sell the tribal products and have almost all the basic functions that 
 an ecomm website have, the project is divided into two major sections
 
+Full SRS can be found at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwqnpiYSL65cCU/view?usp=sharing 
+
 1) __Dashboard__<br />
   1.1 Login/ Signup Screen (OTP Verification)<br />
   1.2 Product Cart<br />
