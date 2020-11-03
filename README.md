@@ -55,8 +55,9 @@ __Steps to get started with project__<br />
     <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-13.png?sanitize=true&raw=true" /><br />
     <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" /><br />
     <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-37.png?sanitize=true&raw=true" /><br />
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-40.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-43.png?sanitize=true&raw=true" /><br />
     <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-00-17.png?sanitize=true&raw=true" /><br />
+    
 
       
     
