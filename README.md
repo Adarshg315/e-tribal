@@ -38,6 +38,7 @@ __Steps to get started with project__<br />
     3.2 __Install the dependencies__ using yarn or npm I am using yarn here.<br />
     3.3 Type __yarn__ and hit enter (it will take a few minutes depending on your internet speed).<br />
     3.4 Now just cd into __frontend/src__ and type __yarn start__ (this will start the project on http://localhost:3000/).
+    3.5 To see the __Dashboard__ you can head over to http://localhost:3000/dashboard.
 
 4) To start __Backend__<br />
     4.1 Change the directory to __e-tribal/backend__.<br />
