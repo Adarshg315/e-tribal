@@ -43,18 +43,20 @@ __Steps to get started with project__<br />
 4) To start __Backend__<br />
     4.1 Change the directory to __e-tribal/backend__.<br />
     4.2 __Install the dependencies__ as done for frontend.<br />
-    4.3 Type __yarn__ and hit enter.<br />.
-    4.4 Once all the packages are installed start the Node.js server using __node server.js__ command. <br />.
-    (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)<br />.
+    4.3 Type __yarn__ and hit enter.<br />
+    4.4 Once all the packages are installed start the Node.js server using __node server.js__ command. <br />
+    (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)<br />
   
     
-    __Some Screenshots of the Project__
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" />
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 18-59-26.png?sanitize=true&raw=true" />
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-13.png?sanitize=true&raw=true" />
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" />
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-37.png?sanitize=true&raw=true" />
-    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-00-17.png?sanitize=true&raw=true" />
+    __Some Screenshots of the Project__<br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-27-30.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 18-59-26.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-13.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-50.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-37.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-01-40.png?sanitize=true&raw=true" /><br />
+    <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshot from 2020-11-03 19-00-17.png?sanitize=true&raw=true" /><br />
 
       
     
