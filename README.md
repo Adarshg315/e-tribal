@@ -47,6 +47,14 @@ __Steps to get started with project__<br />
     4.4 Once all the packages are installed start the Node.js server using __node server.js__ command. <br />
     (You will notice now the data appers on the dashboard and is coming form the server running at __Port:5050__)<br />
   
+5) To run  __Shopkeeper_Portal__<br />
+   5.1 Change the directory to __e-tribal/shopkeeper__.<br />
+   5.2 __Install the dependencies__ as done for frontend.<br />
+   5.3 Type __yarn__ and hit enter.<br />
+   5.4 Now just cd into __shopkeeper/src__ and type __yarn start__ (this will start the project on http://localhost:3000/).
+   5.5 You will notice now the data appers on the shopkeeper dashboard and is coming form the server running at __Port:5050__.<br />
+   5.6 Now you can perform the __CRUD operations__ on the data and that will be reflected on the dashboard and will be updated in the mongodb-atlas. 
+
     
     __Some Screenshots of the Project__<br />
     <img src="https://raw.githubusercontent.com/Adarshg315/e-tribal/master/Screenshots/Screenshot from 2020-11-03 19-27-30.png?sanitize=true&raw=true" /><br />
