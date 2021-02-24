@@ -11,26 +11,25 @@ import React, { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import CartDialog from "../../screens/CartDialog";
 import TopnavStyles, { useStylesBootstrap } from "./TopNavStyles";
-import Avatar from "@material-ui/core/Avatar";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+// import Avatar from "@material-ui/core/Avatar";
+// import { makeStyles, withStyles } from "@material-ui/core/styles";
+// import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import AuthContext from "../../context/AuthContext";
+// import AuthContext from "../../context/AuthContext";
 import WishDialog from "../../screens/WishDialog";
 import WishContext from "../../context/WishContext";
 import Toggle from "../../Toggle";
 import { useDarkMode } from "../../userDarkMode";
-import InputBase from "@material-ui/core/InputBase";
-import SearchIcon from "@material-ui/icons/Search";
+// import InputBase from "@material-ui/core/InputBase";
+// import SearchIcon from "@material-ui/icons/Search";
 
 const TopNav = () => {
 	const classes = TopnavStyles();
 	// const avatarClasses = styleBadgeStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 	const { cart } = useContext(CartContext);
 	const { wishCart } = useContext(WishContext);
-	const { loggedIn, setLogin } = useContext(AuthContext);
+	// const { loggedIn, setLogin } = useContext(AuthContext);
 	const isMenuOpen = Boolean(anchorEl);
 	const [open, setOpen] = useState(false);
 	const [openWish, setWishOpen] = useState(false);
@@ -51,19 +50,14 @@ const TopNav = () => {
 		setWishOpen(false);
 	};
 
-	const handleMobileMenuClose = () => {
-		setMobileMoreAnchorEl(null);
-	};
-
 	const handleMenuClose = () => {
 		setAnchorEl(null);
-		handleMobileMenuClose();
 	};
 
-	const logoutUser = () => {
-		localStorage.removeItem("loggedIn");
-		setLogin(false);
-	};
+	// const logoutUser = () => {
+	// 	localStorage.removeItem("loggedIn");
+	// 	setLogin(false);
+	// };
 
 	const menuId = "primary-search-account-menu";
 	const renderMenu = (
@@ -83,7 +77,6 @@ const TopNav = () => {
 
 	const BootstrapTooltip = (props) => {
 		const classes = useStylesBootstrap();
-
 		return <Tooltip arrow classes={classes} {...props} />;
 	};
 
@@ -136,7 +129,8 @@ const TopNav = () => {
 						</BootstrapTooltip>
 						<CartDialog open={open} handleClose={handleClose} />
 						{/* Avatar code */}
-						<BootstrapTooltip title="SignOut" placement="bottom">
+						{/* logout user */}
+						{/* <BootstrapTooltip title="SignOut" placement="bottom">
 							<IconButton
 								aria-label="show new products"
 								color="inherit"
@@ -144,7 +138,7 @@ const TopNav = () => {
 							>
 								<ExitToAppIcon />
 							</IconButton>
-						</BootstrapTooltip>
+						</BootstrapTooltip> */}
 						<Toggle theme={theme} toggleTheme={toggleTheme} />
 					</div>
 				</Toolbar>

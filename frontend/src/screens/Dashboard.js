@@ -13,7 +13,7 @@ const Dashboard = () => {
 
 	const classes = DashboardStyles();
 	const [products, setProducts] = useState([]);
-	const [images, setImages] = useState([]);
+	// const [images, setImages] = useState([]);
 
 	useEffect(() => {
 		axios

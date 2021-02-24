@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "../utils/axiosHelper";
 import AuthContext from "../context/AuthContext";
-import Switch from "@material-ui/core/Switch";
+// import Switch from "@material-ui/core/Switch";
 import { FormControl } from "@material-ui/core";
 
 const LoginScreen = () => {
