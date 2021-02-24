@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default axios.create({
-  baseURL: 'http://localhost:5050/',
-  responseType: 'json',
+	baseURL: "https://determined-meitner-b0c027.netlify.app/",
+	responseType: "json",
 });
