@@ -8,84 +8,93 @@ import { useHistory } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "../utils/axiosHelper";
 import AuthContext from "../context/AuthContext";
+import Switch from "@material-ui/core/Switch";
+import { FormControl } from "@material-ui/core";
 
 const LoginScreen = () => {
-  const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({});
-  const { setLogin } = useContext(AuthContext);
-  let history = useHistory();
+	const [open, setOpen] = useState(false);
+	const [form, setForm] = useState({});
+	const { setLogin } = useContext(AuthContext);
+	let history = useHistory();
 
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+	useEffect(() => {
+		setOpen(true);
+	}, []);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+	const handleClose = () => {
+		setOpen(false);
+	};
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("/user/signin", form)
-      .then((res) => {
-        const isLoggedIn = Boolean(res.data.token);
-        localStorage.setItem("loggedIn", isLoggedIn);
-        setLogin(isLoggedIn);
-        history.push("/dashboard");
-      })
-      .catch(() => setOpen(true));
-  };
+	const onSubmit = (e) => {
+		e.preventDefault();
+		axios
+			.post("/user/signup", form)
+			.then((res) => {
+				const isLoggedIn = Boolean(res.data.token);
+				localStorage.setItem("loggedIn", isLoggedIn);
+				setLogin(isLoggedIn);
+				history.push("/dashboard");
+			})
+			.catch(() => setOpen(true));
+		axios
+			.post("/user/login", form)
+			.then((res) => {
+				const isLoggedIn = Boolean(res.data.token);
+				localStorage.setItem("loggedIn", isLoggedIn);
+				setLogin(isLoggedIn);
+				history.push("/dashboard");
+			})
+			.catch(() => setOpen(true));
+	};
 
-  return (
-    <Dialog
-      fullWidth
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="form-dialog-title"
-    >
-      <DialogTitle id="form-dialog-title">Get started</DialogTitle>
+	return (
+		<Dialog
+			fullWidth
+			open={open}
+			onClose={handleClose}
+			aria-labelledby="form-dialog-title"
+		>
+			<DialogTitle id="form-dialog-title">LOGIN</DialogTitle>
 
-      <form onSubmit={onSubmit}>
-        <DialogContent>
-          <TextField
-            autoFocus
-            onChange={(e) => {
-              setForm({ ...form, email: e.target.value });
-            }}
-            value={form.email}
-            placeholder="awesome@iam.com"
-            margin="dense"
-            id="email"
-            label="Enter email"
-            type="textnhn"
-            fullWidth
-            className="form-control"
-          />
-          <TextField
-            autoFocus
-            onChange={(e) => {
-              setForm({ ...form, password: e.target.value });
-            }}
-            value={form.password}
-            margin="dense"
-            id="pass"
-            label="Enter password"
-            type="password"
-            fullWidth
-            className="form-control"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} type="submit" color="primary">
-            Sign-In
-          </Button>
-        </DialogActions>
-      </form>
-    </Dialog>
-  );
+			<FormControl onSubmit={onSubmit}>
+				<DialogContent>
+					<TextField
+						onChange={(e) => {
+							setForm({ ...form, email: e.target.value });
+						}}
+						defaultValue={form.email}
+						placeholder="awesome@iam.com"
+						margin="dense"
+						id="email"
+						label="Enter email"
+						type="text"
+						fullWidth
+						className="form-control"
+					/>
+					<TextField
+						onChange={(e) => {
+							setForm({ ...form, password: e.target.value });
+						}}
+						defaultValue={form.password}
+						margin="dense"
+						id="pass"
+						label="Enter password"
+						type="password"
+						fullWidth
+						className="form-control"
+					/>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleClose} type="submit" color="primary">
+						Login
+					</Button>
+					<Button onClick={handleClose} type="submit" color="primary">
+						Sign-Up
+					</Button>
+				</DialogActions>
+			</FormControl>
+		</Dialog>
+	);
 };
 
 export default LoginScreen;
