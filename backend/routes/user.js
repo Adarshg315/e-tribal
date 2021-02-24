@@ -4,14 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 const auth = require("../middleware/auth");
-
 const User = require("../models/user.model");
-
-/**
- * @method - POST
- * @param - /signin
- * @description - User SignIN
- */
 
 router.post(
   "/signin",
@@ -107,6 +100,7 @@ router.post(
       min: 6,
     }),
   ],
+  
   async (req, res) => {
     const errors = validationResult(req);
 
@@ -176,7 +170,7 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
-//---------------------------------------
+
 //USER CRUD
 
 router.route("/add").post((req, res) => {

@@ -5,7 +5,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
-
 import React, { useEffect, useState, useContext } from "react";
 import axios from "../utils/axiosHelper";
 import AuthContext from "../context/AuthContext";

@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-// import 'react-datepicker/dist/react-datepicker.css';
+
 
 const Editproduct = (props) => {
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
-  const [product, setProduct] = useState([]);
+  const [setProduct] = useState([]);
 
   useEffect(() => {
     axios
@@ -26,7 +26,7 @@ const Editproduct = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);

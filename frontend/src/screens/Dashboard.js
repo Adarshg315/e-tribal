@@ -61,11 +61,11 @@ const Dashboard = () => {
   return (
     <div className={classes.root}>
       <Grid id="dashboard-container" container>
-        <Grid className={classes.paper} item xs={6}>
+        {/* <Grid className={classes.paper} item xs={6}>
           <h2>Tribes</h2>
           <TribesGallery urls={images} />
-        </Grid>
-        <Grid item xs={6} className={classes.paper}>
+        </Grid> */}
+        <Grid item xs={10} className={classes.paper}>
           <h2>Products</h2>
           <Grid container id="products-list">
             {products

@@ -20,48 +20,13 @@ import WishDialog from "../../screens/WishDialog";
 import WishContext from "../../context/WishContext";
 import Toggle from "../../Toggle";
 import { useDarkMode } from "../../userDarkMode";
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search'
 
-const StyledBadge = withStyles((theme) => ({
-  badge: {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "$ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}))(Badge);
-
-const styleBadgeStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
 
 const TopNav = () => {
   const classes = TopnavStyles();
-  const avatarClasses = styleBadgeStyles();
+  // const avatarClasses = styleBadgeStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const { cart } = useContext(CartContext);
@@ -167,13 +132,26 @@ const TopNav = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" color="white" >
         <Toolbar>
           <BootstrapTooltip title="Tribal Cart" placement="bottom">
             <Typography className={classes.title} variant="h6" noWrap>
-              Srappy
+              e-Tribal
             </Typography>
           </BootstrapTooltip>
+          {/* <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* Wish List */}
@@ -207,7 +185,7 @@ const TopNav = () => {
             <CartDialog open={open} handleClose={handleClose} />
 
             {/* Avatar code */}
-            <BootstrapTooltip title="User" placement="bottom">
+            {/* <BootstrapTooltip title="User" placement="bottom">
               <StyledBadge
                 overlap="circle"
                 anchorOrigin={{
@@ -222,7 +200,7 @@ const TopNav = () => {
                   // src="https://media-exp1.licdn.com/dms/image/C5103AQG-Rx4p5D2C8A/profile-displayphoto-shrink_200_200/0?e=1594857600&v=beta&t=WxMXbindgaLSKKAWKvbYvfDFLkKMASORdJPa2DG3qWI"
                 />
               </StyledBadge>
-            </BootstrapTooltip>
+            </BootstrapTooltip> */}
 
             <BootstrapTooltip title="SignOut" placement="bottom">
               <IconButton

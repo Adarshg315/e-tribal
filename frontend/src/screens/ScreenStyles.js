@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const CartDialogStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
+    color:"white",
   },
   title: {
     marginLeft: theme.spacing(2),
