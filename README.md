@@ -16,7 +16,7 @@ an ecomm website have, the project is divided into two major sections
 __SRS__ available at: https://drive.google.com/file/d/1IqX0ZnX53CDv8mXpWkcwqnpiYSL65cCU/view?usp=sharing 
 
 1) __Dashboard__<br />
-  1.1 Login/ Signup Screen (OTP Verification)<br />
+  1.1 Login/ Signup Screen <br />
   1.2 Product Cart<br />
   1.3 Payment Gateway<br />
   1.4 Product Wishlist<br />
